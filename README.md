@@ -1,17 +1,17 @@
-# Shopping Cart Practice v3
+# Shopping Cat Practice v3
 
-![Screenshot](./public/images/screenshot.webp)
+![Screen Shot](./public/screenshots/screenshot.webp)
 
-## stacks
+## Stacks
 
-- Fontawesome
+- FontAwesome
 - Tailwind CSS with DaisyUI
 - Vite
 
-## steps
+## Steps
 
 - run `npm install` to install all packages.
-- run `npm run dev` to run a development server on your local machine.
+- run `npm run dev` to run a development server on your local machine (maybe port 5173).
 - run `npm run api` to run a fake API server on your local machine (port 3002).
 - and write all implements in `app.js`.
 

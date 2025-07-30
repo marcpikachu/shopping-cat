@@ -6,6 +6,8 @@ window.Alpine = Alpine;
 
 Alpine.data("shoppingCart", () => ({
     cats: [],
+    adoptList: [],
+
       async init() {
         const url = "http://localhost:3002/cats";
         try {
@@ -15,6 +17,12 @@ Alpine.data("shoppingCart", () => ({
         console.error("API 錯誤：", err);
         }
     },
+    addToCart(cat) {
+        this.adoptList.push(cat); 
+        }
+
+
 }));
 
 Alpine.start();
+

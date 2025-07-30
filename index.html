@@ -44,7 +44,7 @@
                   <h5 x-text="cat.name" class="card-title"></h5>
                   <p x-text="'$'+ cat.price">$20</p>
                   <div class="justify-end card-actions">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" @click="addToCart(cat)">
                       <i class="fas fa-cat"></i> 認養
                     </button>
                   </div>
@@ -68,45 +68,19 @@
               </thead>
               <tbody>
                 <!-- item start -->
-                <tr class="text-lg">
-                  <td>老大</td>
-                  <td>
-                    <input
-                      type="number"
-                      value="1"
-                      min="1"
-                      class="input input-bordered"
-                    />
-                  </td>
-                  <td>$20</td>
-                  <td>$20</td>
-                  <td>
-                    <button class="btn btn-xs btn-primary">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
-                  </td>
-                </tr>
-                <!-- item end -->
-
-                <!-- item start -->
-                <tr class="text-lg">
-                  <td>胖胖</td>
-                  <td>
-                    <input
-                      type="number"
-                      value="1"
-                      min="1"
-                      class="input input-bordered"
-                    />
-                  </td>
-                  <td>$8.5</td>
-                  <td>$8.5</td>
-                  <td>
-                    <button class="btn btn-xs btn-primary">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
-                  </td>
-                </tr>
+                <template x-for="item in adoptList" :key="item.name">
+                  <tr class="text-lg">
+                    <td x-text="item.name"></td>
+                    <td>1</td>
+                    <td x-text="'$' + item.price"></td>
+                    <td x-text="'$' + item.price"></td>
+                    <td>
+                      <button class="btn btn-xs btn-primary">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </template>
                 <!-- item end -->
               </tbody>
               <tfoot class="text-lg bg-slate-100">

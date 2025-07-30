@@ -9,38 +9,13 @@
     <link rel="stylesheet" href="/src/styles/style.css" />
   </head>
   <body>
-    <div x-data="shoppingCart">
-      <template x-for="cat in cats">
-        <div class="card">
-          <p x-text="cat.name"></p>
-          <p x-text="'$' + cat.price"></p>
-          <img :src="'images/' + cat.pic" :alt="cat.name">
-          <button class="btn btn-primary" @click="addToCart(cat)">
-            認養
-          </button>
-        </div>
-      </template>
-      <div class="mt-6 p-4 bg-gray-100">
-        <h2>認養清單</h2>
-         <template x-for="item in adoptList">
-          <div>
-            <p x-text="item.name"></p>
-            <p x-text="'$' + item.price"></p>
-          </div>
-          </template>
-      </div>
-    </div>
-
-
-
-    <div id="app">
+    <div x-data="shoppingCart" id="app">
       <main>
         <header>
           <nav class="shadow navbar bg-base-100">
             <div class="flex-1">
               <a class="text-xl btn btn-ghost"
-                ><i class="fas fa-gem"></i> 賺很大商店</a
-              >
+                ><i class="fas fa-gem"></i> 賺很大商店</a>
             </div>
             <div class="flex-none">
               <ul class="px-1 menu menu-horizontal">
@@ -55,113 +30,28 @@
             </div>
           </nav>
         </header>
-
         <section class="container px-6 py-3 mx-auto">
           <p class="px-6 py-2 bg-yellow-400 rounded-full">請以認養取代購買！</p>
           <div
-            class="grid grid-cols-1 gap-3 my-2 lg:grid-cols-6 sm:grid-cols-3"
-          >
-            <!-- cat start -->
-            <div class="shadow card bg-base-100">
-              <figure>
-                <img src="images/cat001.jpg" class="select-none" alt="" />
-              </figure>
-              <div class="card-body">
-                <h5 class="card-title">老大</h5>
-                <p>$20</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                    <i class="fas fa-cat"></i> 認養
-                  </button>
+            class="grid grid-cols-1 gap-3 my-2 lg:grid-cols-6 sm:grid-cols-3">
+            <template x-for="cat in cats" :key="cat.name">
+              <!-- cat start -->
+              <div class="shadow card bg-base-100">
+                <figure>
+                  <img :src="'images/' + cat.picture" class="select-none" :alt="cat.name" />
+                </figure>
+                <div class="card-body">
+                  <h5 x-text="cat.name" class="card-title"></h5>
+                  <p x-text="'$'+ cat.price">$20</p>
+                  <div class="justify-end card-actions">
+                    <button class="btn btn-primary">
+                      <i class="fas fa-cat"></i> 認養
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- cat end -->
-
-            <!-- cat start -->
-            <div class="shadow card bg-base-100">
-              <figure>
-                <img src="images/cat002.jpg" class="select-none" alt="" />
-              </figure>
-              <div class="card-body">
-                <h5 class="card-title">貝貝</h5>
-                <p>$15</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                    <i class="fas fa-cat"></i> 認養
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- cat end -->
-
-            <!-- cat start -->
-            <div class="shadow card bg-base-100">
-              <figure>
-                <img src="images/cat003.jpg" class="select-none" alt="" />
-              </figure>
-              <div class="card-body">
-                <h5 class="card-title">老虎</h5>
-                <p>$10</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                    <i class="fas fa-cat"></i> 認養
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- cat end -->
-
-            <!-- cat start -->
-            <div class="shadow card bg-base-100">
-              <figure>
-                <img src="images/cat004.jpg" class="select-none" alt="" />
-              </figure>
-              <div class="card-body">
-                <h5 class="card-title">胖胖</h5>
-                <p>$8.5</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                    <i class="fas fa-cat"></i> 認養
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- cat end -->
-
-            <!-- cat start -->
-            <div class="shadow card bg-base-100">
-              <figure>
-                <img src="images/cat005.jpg" class="select-none" alt="" />
-              </figure>
-              <div class="card-body">
-                <h5 class="card-title">小花</h5>
-                <p>$9.99</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                    <i class="fas fa-cat"></i> 認養
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- cat end -->
-
-            <!-- cat start -->
-            <div class="shadow card bg-base-100">
-              <figure>
-                <img src="images/cat006.jpg" class="select-none" alt="" />
-              </figure>
-              <div class="card-body">
-                <h5 class="card-title">黑臉</h5>
-                <p>$12.5</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                    <i class="fas fa-cat"></i> 認養
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- cat end -->
+              <!-- cat end -->
+            </template>
           </div>
 
           <section class="px-8 mt-12">

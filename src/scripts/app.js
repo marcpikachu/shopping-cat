@@ -1,23 +1,20 @@
-import "@fortawesome/fontawesome-free/css/all.css"
-// 實作寫在這裡！
+import "@fortawesome/fontawesome-free/css/all.css";
 import Alpine from "alpinejs";
+import axios from "axios";
 
 window.Alpine = Alpine;
 
 Alpine.data("shoppingCart", () => ({
-    cats:[
-      {name:'老大', price:20, pic:'cat001.jpg'},
-      {name:'貝貝', price:15, pic:'cat002.jpg'},
-      {name:'老虎', price:10, pic:'cat003.jpg'}
-      ],
-    adoptList: [],
-
- addToCart(cat) {
-  console.log("你剛剛認養了：", cat.name);
-  this.adoptList.push(cat);
-  console.log("現在清單是：", this.adoptList);
-}
-
-}))
+    cats: [],
+      async init() {
+        const url = "http://localhost:3002/cats";
+        try {
+        const resp = await axios.get(url);
+        this.cats = resp.data;
+        } catch (err) {
+        console.error("API 錯誤：", err);
+        }
+    },
+}));
 
 Alpine.start();

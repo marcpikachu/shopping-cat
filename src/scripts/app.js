@@ -9,6 +9,11 @@ Alpine.data("shoppingCart", () => ({
     adoptList: [],
 
       async init() {
+        const wannaBuy = localStorage.getItem('adoptList');
+            if (wannaBuy) {
+                this.adoptList = JSON.parse(wannaBuy);
+            }
+
         const url = "http://localhost:3002/cats";
         try {
         const resp = await axios.get(url);
@@ -19,16 +24,17 @@ Alpine.data("shoppingCart", () => ({
     },
     addToCart(cat) {
         this.adoptList.push(cat); 
+        localStorage.setItem('adoptList', JSON.stringify(this.adoptList))
     },
     removeItem(cat) {
         const index = this.adoptList.findIndex(item => item.name == cat.name);
         if (index != -1) {
             this.adoptList.splice(index, 1);
         }
-    
     },
     clearCart() {
         this.adoptList = []; 
+        localStorage.removeItem('adoptList');
     }
 
 }));

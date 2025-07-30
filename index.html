@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="/src/styles/style.css" />
   </head>
   <body>
+    <div x-data="shoppingCart">
+      <template x-for="cat in cats">
+        <div class="card">
+          <p x-text="cat.name"></p>
+          <p x-text="'$' + cat.price"></p>
+          <img :src="'images/' + cat.pic" :alt="cat.name">
+          <button class="btn btn-primary" @click="addToCart(cat)">
+            認養
+          </button>
+        </div>
+      </template>
+      <div class="mt-6 p-4 bg-gray-100">
+        <h2>認養清單</h2>
+         <template x-for="item in adoptList">
+          <div>
+            <p x-text="item.name"></p>
+            <p x-text="'$' + item.price"></p>
+          </div>
+          </template>
+      </div>
+    </div>
+
+
+
     <div id="app">
       <main>
         <header>

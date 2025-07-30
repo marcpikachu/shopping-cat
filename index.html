@@ -75,7 +75,7 @@
                     <td x-text="'$' + item.price"></td>
                     <td x-text="'$' + item.price"></td>
                     <td>
-                      <button class="btn btn-xs btn-primary">
+                      <button class="btn btn-xs btn-primary" @click="removeItem(item)">
                         <i class="fas fa-trash-alt"></i>
                       </button>
                     </td>
@@ -92,7 +92,7 @@
                 </tr>
               </tfoot>
             </table>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" @click="clearCart">
               <i class="fas fa-baby-carriage"></i> 清空認養清單
             </button>
           </section>

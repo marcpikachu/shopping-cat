@@ -19,8 +19,17 @@ Alpine.data("shoppingCart", () => ({
     },
     addToCart(cat) {
         this.adoptList.push(cat); 
+    },
+    removeItem(cat) {
+        const index = this.adoptList.findIndex(item => item.name == cat.name);
+        if (index != -1) {
+            this.adoptList.splice(index, 1);
         }
-
+    
+    },
+    clearCart() {
+        this.adoptList = []; 
+    }
 
 }));
 

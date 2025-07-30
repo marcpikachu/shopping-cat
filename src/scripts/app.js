@@ -23,7 +23,12 @@ Alpine.data("shoppingCart", () => ({
         }
     },
     addToCart(cat) {
-        this.adoptList.push(cat); 
+        const existing = this.adoptList.find(item => item.name === cat.name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                this.adoptList.push({ ...cat, qty: 1 });
+            } 
         localStorage.setItem('adoptList', JSON.stringify(this.adoptList))
     },
     removeItem(cat) {
@@ -35,7 +40,10 @@ Alpine.data("shoppingCart", () => ({
     clearCart() {
         this.adoptList = []; 
         localStorage.removeItem('adoptList');
-    }
+    },
+    get totalPrice() {
+        return this.adoptList.reduce((sum, item) => sum + item.price * item.qty, 0);
+}
 
 }));
 

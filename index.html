@@ -71,9 +71,9 @@
                 <template x-for="item in adoptList" :key="item.name">
                   <tr class="text-lg">
                     <td x-text="item.name"></td>
-                    <td>1</td>
+                    <td x-text="item.qty"></td>
                     <td x-text="'$' + item.price"></td>
-                    <td x-text="'$' + item.price"></td>
+                    <td x-text="'$' + (item.price * item.qty)"></td>
                     <td>
                       <button class="btn btn-xs btn-primary" @click="removeItem(item)">
                         <i class="fas fa-trash-alt"></i>
@@ -83,11 +83,11 @@
                 </template>
                 <!-- item end -->
               </tbody>
-              <tfoot class="text-lg bg-slate-100">
+              <tfoot class="text-lg bg-slate-100 text-gray-800 font-bold">
                 <tr>
                   <td colspan="2"></td>
                   <td>總價</td>
-                  <td class="font-bold">$28.50</td>
+                  <td class="font-bold" x-text="'$' + totalPrice.toFixed(2)"></td>
                   <td></td>
                 </tr>
               </tfoot>
